@@ -52,7 +52,7 @@ The development was divided into distinct phases:
 
 ## Results and Discussion
 
-1) Crawl Performance and Analysis
+1) Crawl Performance and Analysis (`mycrawler.py`)
    
 The Scrapy crawler was deployed to assess the robustness and effectiveness of the information retrieval system across various domains. This section presents the crawl's statistical outcomes, highlights potential issues encountered during the operation, and proposes recommendations for future improvements.
 
@@ -77,7 +77,7 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
 
 
 
-2) Visualization and Analysis of TF-IDF Scores
+2) Visualization and Analysis of TF-IDF Scores (`indexer.py`)
 - Overview\
   This section presents the visualization of the Term Frequency-Inverse Document Frequency (TF-IDF) scores generated from our corpus of HTML documents processed by the indexer. The objective of these visualizations is to understand the distribution and significance of terms across the corpus, which is crucial for evaluating the effectiveness of our indexing approach.
 
@@ -95,19 +95,63 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
 - Conclusion\
    The visualization of TF-IDF scores has provided valuable insights into the term distribution within our document corpus. It confirms the general success of our indexing strategy but also highlights areas for improvement. Going forward, we plan to adjust the preprocessing steps to better handle common terms and further refine our indexing parameters. This analysis will guide our continued efforts to enhance the search functionality of our information retrieval system.
 
-3) Visualization of Word2Vec Embeddings and FAISS Index Query Results
-- Objective
-- Word2Vec Embeddings Visualization
-- FAISS Index Query Results
-- Discussion
-- Conclusion
+3) Visualization of Word2Vec Embeddings and FAISS Index Query Results (`text_processing.py`)
+- Objective\
+  The following analysis aims to visualize the semantic space created by the Word2Vec embeddings using dimensionality reduction techniques and to examine the querying capabilities of the FAISS index. This allows us to assess the model's understanding of word similarities and the effectiveness of our search index.
+
+- Word2Vec Embeddings Visualization\
+   - *Methodology*: The Word2Vec model was loaded, and the embeddings for each word in its vocabulary were extracted. Two dimensionality reduction techniques, PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding), were applied to project these high-dimensional vectors into a 2D space for visualization.![image](https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/3d8bff3b-7632-4229-8f64-
+   - *Results*:
+      - The PCA visualization revealed a distribution where words like "document" and "world" appeared further apart from the cluster containing "hello", "from", and "the", suggesting a distinction between these sets of terms within the embedding space.\
+      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/aee7a2a0-fbdb-4076-b067-8ae35dec426a">
+      - The t-SNE visualization presented a more separated distribution of words, with "document" and "side" noticeably distanced from a tight cluster of other terms. The significant dispersion of points in t-SNE reflects a more nuanced understanding of word relationships by the Word2Vec model.\
+      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/dfd091ce-c2c9-411b-8ffb-cf29d2de7ebb">\
+   - *Discussion*: The PCA plot provided a broad overview of the embedding space, while t-SNE offered deeper insights into the local structure, highlighting the model's ability to distinguish between different semantic contexts. The results from both visualizations are consistent with the expectation that semantically similar words are closer in the embedded space.
+
+
+
+- FAISS Index Query Results\
+   - Methodology: A query vector was generated for the term "example" using the Word2Vec model and used to perform a nearest-neighbor search on the FAISS index.\
+     <img width="321" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/3c1791ce-59cb-4b6d-b4bf-5bbb6e2f9c6c">
+ 
+   - Results: The FAISS index returned the closest words to "example", with "document" being the nearest followed by "hello". Surprisingly, multiple identical results were returned for "world" with extremely high distances (Figure 3).
+
+   - Discussion: The nearest-neighbor results show the FAISS index effectively retrieving the most similar word, "document". However, the repeated "world" entries with high distances indicate potential issues in the index or the querying process that need investigation.\
+
+Conclusion: The visualizations and FAISS index query results underscore the utility of our Word2Vec embeddings for understanding word semantics and providing a foundation for effective search capabilities. The visualizations confirm the expected semantic relationships, while the FAISS query results suggest the need for a review of the indexing process to ensure reliability.
 
 4) Testing of Query Processor (`app.py`)
-- Test Objectives
-- Methodology
-- Test 1: Valid Search Query
-- Test 2: Error Handling for Missing Query Data
-- Conclusions
+- Test Objectives\
+  The goal of the testing was to verify the functionality and error handling of the Query Processor within our Flask application. Two primary tests were conducted: a valid search query test and an error handling test for requests with missing data.
+
+- Methodology\
+  The Flask application was tested using curl, a command-line tool, to send HTTP POST requests to the /search endpoint. The application was expected to process the search queries and return a list of document indices or appropriate error messages.
+
+- Test 1: Valid Search Query\
+  A POST request was made to the search endpoint with a well-formed JSON payload containing a search query and a parameter indicating the number of results (top_k) to return.
+
+   - Request:\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/ec8816ca-8088-427e-b915-207001613f55">
+
+   - Response:\ <img width="90" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/43a1ee0c-8b54-4124-88a4-add4fe4774ed">
+
+   - Outcome: The application successfully processed the search query and returned an array of document indices, with the array length matching the specified top_k value. The indices in the response correspond to the documents that the model determined to be most relevant to the query.
+
+
+- Test 2: Error Handling for Missing Query Data\
+   A POST request with an empty JSON payload was sent to the application to test its response when mandatory data is missing.\
+   - Request:\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/90b402b8-482f-4e29-b14a-9db6cbabd141">
+
+
+   - Response:\ <img width="200" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/50f40a12-d3b9-48d5-8782-bb9de2786d98">
+
+
+   - Outcome: The application correctly identified the missing query parameter and responded with an appropriate error message. The response code for this error was not documented in the output but is expected to be 400 Bad Request.\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/924d4c9c-2fce-41c3-bf5c-6cf1cbe8e1b1">
+
+
+
+
+   - Conclusions\
+     The Query Processor responded accurately to both the valid search request and the request with missing data, demonstrating its reliability and robust error handling. The tests confirmed that the processor can correctly identify relevant documents and handle client errors gracefully, ensuring a robust user experience.
 
 ## Challenges
 
