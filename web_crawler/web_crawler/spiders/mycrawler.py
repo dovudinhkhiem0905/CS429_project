@@ -3,28 +3,27 @@ import os
 
 class MyCrawler(scrapy.Spider):
     name = 'mycrawler'
-    allowed_domains = ['example.com', 'iana.org']
-    start_urls = ['http://example.com'] 
+    allowed_domains = ['crawler-test.com']
+    start_urls = ['https://crawler-test.com/']
+    page_count = 0  # Initialize a counter for the pages
 
     custom_settings = {
-        'DEPTH_LIMIT': 3,  # Maximum depth of crawling
-        'CLOSESPIDER_PAGECOUNT': 100  # Maximum number of pages to crawl
+        'DEPTH_LIMIT': 3,
+        'CLOSESPIDER_PAGECOUNT': 100
     }
 
     def parse(self, response):
-        # Ensure the output directory exists
+        self.page_count += 1  # Increment the page counter
         output_dir = 'output'
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-        # Save the response body as HTML
-        page = response.url.split("/")[-1]
-        filename = f'{output_dir}/{page}.html'
+        # Format filename to include the page count
+        filename = f'{output_dir}/result_{self.page_count}.html'
         with open(filename, 'wb') as f:
             f.write(response.body)
-        self.log(f'Saved file output/{response.url.split("/")[-1]}.html')
+        self.log(f'Saved file {filename}')
 
-    # Extract and follow links
         links = response.css('a::attr(href)').getall()
         for link in links:
             if link is not None and response.urljoin(link).startswith("http"):
