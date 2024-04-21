@@ -85,7 +85,7 @@ To run tests and evaluate the system, use the provided test scripts or utilize t
 - **Khiem Do** - *Initial work* - [dovudinhkhiem0905](https://github.com/dovudinhkhiem0905)
 
 
-# Development of an Information Retrieval System with Neural Search Capabilities
+# *Report:* Development of an Information Retrieval System with Neural Search Capabilities
 
 **Author:** Khiem Do  
 **Date:** 04/21/2024  
