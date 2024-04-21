@@ -38,16 +38,16 @@ The development was divided into distinct phases:
 
 ## Implementation
 
-- Crawler Implementation
+- Crawler Implementation\
   <img width="263" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/9f01e824-b37d-4a97-a17f-952a38f6630d">
 
-- Indexing Implementation
+- Indexing Implementation\
   <img width="266" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/ea1a6ee6-2e12-46ab-a008-46a217556c32">
 
-- Neural Indexing Implementation
+- Neural Indexing Implementation\
   <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/19bcad7f-0bb9-4fd4-bc88-ec6de41ec9d4">
 
-- Query Processor Implementation
+- Query Processor Implementation\
   <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/7a6b0d57-b538-41aa-98ec-3d61b8d7afea">
 
 ## Results and Discussion
