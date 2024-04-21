@@ -130,22 +130,27 @@ Conclusion: The visualizations and FAISS index query results underscore the util
 - Test 1: Valid Search Query\
   A POST request was made to the search endpoint with a well-formed JSON payload containing a search query and a parameter indicating the number of results (top_k) to return.
 
-   - Request:\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/ec8816ca-8088-427e-b915-207001613f55">
+   - Request:\
+     <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/ec8816ca-8088-427e-b915-207001613f55">
 
-   - Response:\ <img width="90" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/43a1ee0c-8b54-4124-88a4-add4fe4774ed">
+   - Response:\
+     <img width="90" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/43a1ee0c-8b54-4124-88a4-add4fe4774ed">
 
    - Outcome: The application successfully processed the search query and returned an array of document indices, with the array length matching the specified top_k value. The indices in the response correspond to the documents that the model determined to be most relevant to the query.
 
 
 - Test 2: Error Handling for Missing Query Data\
    A POST request with an empty JSON payload was sent to the application to test its response when mandatory data is missing.\
-   - Request:\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/90b402b8-482f-4e29-b14a-9db6cbabd141">
+   - Request:\
+     <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/90b402b8-482f-4e29-b14a-9db6cbabd141">
 
 
-   - Response:\ <img width="200" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/50f40a12-d3b9-48d5-8782-bb9de2786d98">
+   - Response:\
+     <img width="200" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/50f40a12-d3b9-48d5-8782-bb9de2786d98">
 
 
-   - Outcome: The application correctly identified the missing query parameter and responded with an appropriate error message. The response code for this error was not documented in the output but is expected to be 400 Bad Request.\ <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/924d4c9c-2fce-41c3-bf5c-6cf1cbe8e1b1">
+   - Outcome: The application correctly identified the missing query parameter and responded with an appropriate error message. The response code for this error was not documented in the output but is expected to be 400 Bad Request.\
+     <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/924d4c9c-2fce-41c3-bf5c-6cf1cbe8e1b1">
 
 
 
