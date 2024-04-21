@@ -82,15 +82,7 @@ To run tests and evaluate the system, use the provided test scripts or utilize t
 
 We welcome contributions to this project. Please fork the repository, make your changes, and submit a pull request for review.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Authors
 
 - **Khiem Do** - *Initial work* - [dovudinhkhiem0905](https://github.com/dovudinhkhiem0905)
-
-## Acknowledgments
-
-- Professor Panchal, for guidance throughout the development process.
-- The CS 429 class of Spring 2024, for their collaborative efforts and feedback.
