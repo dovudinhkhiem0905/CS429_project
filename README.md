@@ -69,6 +69,13 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
    - **Crawl Duration:** 20.65 seconds
 
 - Analysis of Findings
+   - Success Rate: The crawler successfully retrieved content from 107 out of 121 requests, indicating a high success rate. This success underscores the crawler's efficiency in navigating and extracting data.
+   - Error Analysis:
+      - DNS Lookup Errors (4 instances): These errors suggest potential issues with network settings or misconfigurations in domain names. Further investigation into network logs and domain configurations is recommended.
+      - HTTP 404 Errors: Occurred in 4 instances, indicating that some URLs were not found. This could be due to outdated links or misconfigured routing on the target websites.
+      - Server Errors (500 series): These errors imply server-side issues at the target domains during the crawl, which may include rate limiting, temporary unavailability, or server misconfigurations.
+
+
 
 2) Visualization and Analysis of TF-IDF Scores
 - Overview
