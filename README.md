@@ -1,6 +1,6 @@
 # Information Retrieval System with Neural Search Capabilities
 
-**Note: Report is below description! Please refer to report.docx in the repository for extra visual representations and content**
+***Note: Report is below description! Please refer to report.docx in the repository for extra visual representations and content***
 
 This repository contains the implementation of an advanced information retrieval system designed to index and search HTML documents, utilizing both traditional and neural search methods. The system is built with Python and includes a web crawler, a TF-IDF indexer, neural indexing with Word2Vec and FAISS, and a Flask-based query processor.
 
