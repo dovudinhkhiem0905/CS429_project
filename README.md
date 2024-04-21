@@ -78,11 +78,22 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
 
 
 2) Visualization and Analysis of TF-IDF Scores
-- Overview
-- Methodology
-- Results
-- Analysis
-- Conclusion
+- Overview\
+  This section presents the visualization of the Term Frequency-Inverse Document Frequency (TF-IDF) scores generated from our corpus of HTML documents processed by the indexer. The objective of these visualizations is to understand the distribution and significance of terms across the corpus, which is crucial for evaluating the effectiveness of our indexing approach.
+
+- Methodology\
+  The TF-IDF scores were extracted from the serialized TF-IDF matrix, which was created using the TfidfVectorizer from Scikit-Learn. This matrix quantifies the importance of each term in the corpus relative to their document frequency. For visualization, I used Python's Matplotlib and Pandas libraries to plot the data. Specifically, I computed the average TF-IDF score for each term across all documents and selected the top 20 terms for graphical representation.
+
+- Results\
+  The bar chart of the top 20 terms by average TF-IDF score revealed a distinct concentration on key thematic terms. Notably, terms associated with core topics of the dataset—such as 'data', 'analysis', and 'network'—dominated the chart, highlighting their prevalence and importance.\
+
+  <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/e0b77337-a101-401b-8eec-918e14a1b9b3">
+
+- Analysis\
+  The analysis of TF-IDF scores supports the efficacy of our text processing and indexing strategy. The visualization confirms that the indexer is effectively identifying and weighting the most informative terms within the corpus. However, the appearance of some common but less informative terms suggests the potential for further refining our approach, such as by enhancing the stop-word filtering process to reduce noise in the index.
+
+- Conclusion\
+   The visualization of TF-IDF scores has provided valuable insights into the term distribution within our document corpus. It confirms the general success of our indexing strategy but also highlights areas for improvement. Going forward, we plan to adjust the preprocessing steps to better handle common terms and further refine our indexing parameters. This analysis will guide our continued efforts to enhance the search functionality of our information retrieval system.
 
 3) Visualization of Word2Vec Embeddings and FAISS Index Query Results
 - Objective
