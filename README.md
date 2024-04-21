@@ -57,15 +57,16 @@ The development was divided into distinct phases:
 The Scrapy crawler was deployed to assess the robustness and effectiveness of the information retrieval system across various domains. This section presents the crawl's statistical outcomes, highlights potential issues encountered during the operation, and proposes recommendations for future improvements.
 
 - Crawl Statistics Summary:
-   •	Total Requests Made: 121
-   •	Total Responses Received: 117
-      o	Successful (200): 107
-      o	Client Errors (404): 4
-      o	Server Errors (5xx): 4 (Specific codes: 500, 510, 511, 520, 598, 599)
-   •	DNS Lookup Errors: 4
-   •	Duplicate Requests Filtered: 1057
-   •	Max Request Depth: 3
-   •	Crawl Duration: 20.65 seconds
+   - **Total Requests Made:** 121
+   - **Total Responses Received:** 117
+     - **Successful (200):** 107
+     - **Client Errors (404):** 4
+     - **Server Errors (5xx):** 4
+       - Specific codes: 500, 510, 511, 520, 598, 599
+   - **DNS Lookup Errors:** 4
+   - **Duplicate Requests Filtered:** 1057
+   - **Max Request Depth:** 3
+   - **Crawl Duration:** 20.65 seconds
 
 - Analysis of Findings
 
