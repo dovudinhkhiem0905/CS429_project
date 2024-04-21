@@ -85,7 +85,7 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
   The TF-IDF scores were extracted from the serialized TF-IDF matrix, which was created using the TfidfVectorizer from Scikit-Learn. This matrix quantifies the importance of each term in the corpus relative to their document frequency. For visualization, I used Python's Matplotlib and Pandas libraries to plot the data. Specifically, I computed the average TF-IDF score for each term across all documents and selected the top 20 terms for graphical representation.
 
 - Results\
-  The bar chart of the top 20 terms by average TF-IDF score revealed a distinct concentration on key thematic terms. Notably, terms associated with core topics of the dataset—such as 'data', 'analysis', and 'network'—dominated the chart, highlighting their prevalence and importance.\
+  The bar chart of the top 20 terms by average TF-IDF score revealed a distinct concentration on key thematic terms. Notably, terms associated with core topics of the dataset—such as 'data', 'analysis', and 'network'—dominated the chart, highlighting their prevalence and importance.
 
   <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/e0b77337-a101-401b-8eec-918e14a1b9b3">
 
@@ -99,24 +99,24 @@ The Scrapy crawler was deployed to assess the robustness and effectiveness of th
 - Objective\
   The following analysis aims to visualize the semantic space created by the Word2Vec embeddings using dimensionality reduction techniques and to examine the querying capabilities of the FAISS index. This allows us to assess the model's understanding of word similarities and the effectiveness of our search index.
 
-- Word2Vec Embeddings Visualization\
-   - *Methodology*: The Word2Vec model was loaded, and the embeddings for each word in its vocabulary were extracted. Two dimensionality reduction techniques, PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding), were applied to project these high-dimensional vectors into a 2D space for visualization.![image](https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/3d8bff3b-7632-4229-8f64-
+- Word2Vec Embeddings Visualization
+   - *Methodology*: The Word2Vec model was loaded, and the embeddings for each word in its vocabulary were extracted. Two dimensionality reduction techniques, PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding), were applied to project these high-dimensional vectors into a 2D space for visualization.
    - *Results*:
       - The PCA visualization revealed a distribution where words like "document" and "world" appeared further apart from the cluster containing "hello", "from", and "the", suggesting a distinction between these sets of terms within the embedding space.\
-      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/aee7a2a0-fbdb-4076-b067-8ae35dec426a">
-      - The t-SNE visualization presented a more separated distribution of words, with "document" and "side" noticeably distanced from a tight cluster of other terms. The significant dispersion of points in t-SNE reflects a more nuanced understanding of word relationships by the Word2Vec model.\
-      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/dfd091ce-c2c9-411b-8ffb-cf29d2de7ebb">\
+      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/aee7a2a0-fbdb-4076-b067-8ae35dec426a">\
+      - The t-SNE visualization presented a more separated distribution of words, with "document" and "side" noticeably distanced from a tight cluster of other terms. The significant dispersion of points in t-SNE reflects a more nuanced understanding of word relationships by the Word2Vec model.
+      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/dfd091ce-c2c9-411b-8ffb-cf29d2de7ebb">
    - *Discussion*: The PCA plot provided a broad overview of the embedding space, while t-SNE offered deeper insights into the local structure, highlighting the model's ability to distinguish between different semantic contexts. The results from both visualizations are consistent with the expectation that semantically similar words are closer in the embedded space.
 
 
 
-- FAISS Index Query Results\
+- FAISS Index Query Results
    - Methodology: A query vector was generated for the term "example" using the Word2Vec model and used to perform a nearest-neighbor search on the FAISS index.\
      <img width="321" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/3c1791ce-59cb-4b6d-b4bf-5bbb6e2f9c6c">
  
    - Results: The FAISS index returned the closest words to "example", with "document" being the nearest followed by "hello". Surprisingly, multiple identical results were returned for "world" with extremely high distances (Figure 3).
 
-   - Discussion: The nearest-neighbor results show the FAISS index effectively retrieving the most similar word, "document". However, the repeated "world" entries with high distances indicate potential issues in the index or the querying process that need investigation.\
+   - Discussion: The nearest-neighbor results show the FAISS index effectively retrieving the most similar word, "document". However, the repeated "world" entries with high distances indicate potential issues in the index or the querying process that need investigation.
 
 Conclusion: The visualizations and FAISS index query results underscore the utility of our Word2Vec embeddings for understanding word semantics and providing a foundation for effective search capabilities. The visualizations confirm the expected semantic relationships, while the FAISS query results suggest the need for a review of the indexing process to ensure reliability.
 
@@ -127,7 +127,7 @@ Conclusion: The visualizations and FAISS index query results underscore the util
 - Methodology\
   The Flask application was tested using curl, a command-line tool, to send HTTP POST requests to the /search endpoint. The application was expected to process the search queries and return a list of document indices or appropriate error messages.
 
-- Test 1: Valid Search Query\
+- Test 1: Valid Search Query
   A POST request was made to the search endpoint with a well-formed JSON payload containing a search query and a parameter indicating the number of results (top_k) to return.
 
    - Request:\
@@ -139,8 +139,8 @@ Conclusion: The visualizations and FAISS index query results underscore the util
    - Outcome: The application successfully processed the search query and returned an array of document indices, with the array length matching the specified top_k value. The indices in the response correspond to the documents that the model determined to be most relevant to the query.
 
 
-- Test 2: Error Handling for Missing Query Data\
-   A POST request with an empty JSON payload was sent to the application to test its response when mandatory data is missing.\
+- Test 2: Error Handling for Missing Query Data
+   A POST request with an empty JSON payload was sent to the application to test its response when mandatory data is missing.
    - Request:\
      <img width="468" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/90b402b8-482f-4e29-b14a-9db6cbabd141">
 
