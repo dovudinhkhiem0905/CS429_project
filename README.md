@@ -105,6 +105,8 @@ The exponential growth of data on the internet necessitates efficient retrieval 
 The system is composed of three main components:
 
 - **Web Crawler (`mycrawler.py`):** A Scrapy crawler that navigates specified domains and collects HTML documents.
+  <img width="263" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/988942d1-b078-40ee-85d9-62778fa97b11">
+
 - **Indexer (`indexer.py`):** Utilizes TF-IDF to index documents for quick keyword-based search.
 - **Neural Indexer (`text_processing.py`):** Employs Word2Vec to understand document context and FAISS for fast indexing and retrieval.
 - **Query Processor (`app.py`):** A Flask application providing an API endpoint for search queries, interfacing with both indices.
