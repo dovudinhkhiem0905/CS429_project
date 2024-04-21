@@ -1,168 +1,104 @@
-# Information Retrieval System with Neural Search Capabilities
+# CS 429 - Information Retrieval Spring 2024
 
-### ***Note: Report is below! Please refer to report.docx in the repository for extra visual representations and content of the report***
+### Development of an Information Retrieval System with Neural Search Capabilities
 
-This repository contains the implementation of an advanced information retrieval system designed to index and search HTML documents, utilizing both traditional and neural search methods. The system is built with Python and includes a web crawler, a TF-IDF indexer, neural indexing with Word2Vec and FAISS, and a Flask-based query processor.
-
-## System Components
-
-- `mycrawler.py`: A Scrapy-based web crawler that collects HTML documents from specified domains.
-- `indexer.py`: A script that uses Scikit-Learn's TF-IDF to index documents for keyword-based searches.
-- `text_processing.py`: A module that applies Word2Vec to capture document context and utilizes FAISS for indexing and retrieval.
-- `app.py`: A Flask application that provides an API endpoint for processing search queries.
-
-## Getting Started
-
-### Prerequisites
-
-Before running the system, ensure that you have Python 3.6+ installed, along with the following packages:
-
-- Scrapy
-- Scikit-Learn
-- Gensim
-- FAISS
-- Flask
-- NLTK
-
-Install the required packages using `pip`:
-
-```sh
-pip install scrapy scikit-learn gensim faiss-cpu flask nltk
-```
-
-### Usage
-
-#### 1. Running the Crawler
-
-Navigate to the crawler directory and run:
-
-```sh
-scrapy crawl mycrawler
-```
-
-#### 2. Indexing Documents
-
-After collecting the HTML documents, run the indexer to create the TF-IDF matrix:
-
-```sh
-python indexer.py
-```
-
-#### 3. Neural Indexing
-
-To process documents with Word2Vec and create the FAISS index, execute:
-
-```sh
-python text_processing.py
-```
-
-#### 4. Starting the Query Processor
-
-Launch the Flask application:
-
-```sh
-python app.py
-```
-
-Now you can make POST requests to `http://127.0.0.1:5001/search` to query the system.
-
-## API Reference
-
-The search API endpoint accepts POST requests with a JSON payload containing the search query. An example `curl` request:
-
-```sh
-curl -X POST http://127.0.0.1:5001/search \
--H "Content-Type: application/json" \
--d '{"query":"example search query", "top_k":5}'
-```
-
-## Testing
-
-To run tests and evaluate the system, use the provided test scripts or utilize tools like `curl` and Postman to send requests to the API.
-
-## Authors
-
-- **Khiem Do** - *Initial work* - [dovudinhkhiem0905](https://github.com/dovudinhkhiem0905)
-
-
-# *Report:* Development of an Information Retrieval System with Neural Search Capabilities
-
-**Author:** Khiem Do  
+**Khiem Do**  
 **Date:** 04/21/2024  
-**Course:** CS 429 - Information Retrieval Spring 2024  
-**Professor:** Prof. Panchal  
+**Instructor:** Prof. Panchal  
 
-## I. Abstract
+---
+
+## Abstract
 
 This report details the development of an advanced information retrieval system designed to index and search HTML documents. It integrates traditional search methods using Scikit-Learn's TF-IDF with neural search capabilities provided by Word2Vec and FAISS, all accessible via a Flask-based API. The system comprises several components, including a Scrapy-based web crawler, a Scikit-Learn indexer, a Word2Vec and FAISS module for semantic search, and a query processor in Flask.
 
-## II. Introduction
+## Introduction
 
 The exponential growth of data on the internet necessitates efficient retrieval systems. This project aimed to build an information retrieval system that not only matches keywords but also understands context through neural search techniques.
 
-## III. System Overview
+## System Overview
 
 The system is composed of three main components:
+- Web Crawler (`mycrawler.py`): A Scrapy crawler that navigates specified domains and collects HTML documents.
+- Indexer (`indexer.py`): Utilizes TF-IDF to index documents for quick keyword-based search.
+- Neural Indexer (`text_processing.py`): Employs Word2Vec to understand document context and FAISS for fast indexing and retrieval.
+- Query Processor (`app.py`): A Flask application providing an API endpoint for search queries, interfacing with both indices.
 
-- **Web Crawler (`mycrawler.py`):** A Scrapy crawler that navigates specified domains and collects HTML documents.
-  <img width="263" alt="image" src="https://github.com/dovudinhkhiem0905/CS429_project/assets/100241521/988942d1-b078-40ee-85d9-62778fa97b11">
-
-- **Indexer (`indexer.py`):** Utilizes TF-IDF to index documents for quick keyword-based search.
-- **Neural Indexer (`text_processing.py`):** Employs Word2Vec to understand document context and FAISS for fast indexing and retrieval.
-- **Query Processor (`app.py`):** A Flask application providing an API endpoint for search queries, interfacing with both indices.
-
-## IV. Methodology
+## Methodology
 
 The development was divided into distinct phases:
+1. Crawling: The Scrapy crawler was set to target example domains, fetching HTML content and storing it locally.
+2. Indexing:
+   - TF-IDF Indexing: Extracted text from HTML documents to create a TF-IDF matrix.
+   - Neural Indexing: Tokenized text was used to train a Word2Vec model, and resulting vectors were indexed using FAISS.
 
-1. **Crawling:** The Scrapy crawler was set to target example domains, fetching HTML content and storing it locally.
-2. **Indexing:**
-   - **TF-IDF Indexing:** Extracted text from HTML documents to create a TF-IDF matrix.
-   - **Neural Indexing:** Tokenized text was used to train a Word2Vec model, and resulting vectors were indexed using FAISS.
-
-3. **Query Processing:**
+3. Query Processing:
    - Designed a Flask API to receive queries in JSON format.
    - Implemented handlers to use either the TF-IDF or neural index based on the query parameters.
 
-## V. Implementation
+## Implementation
 
-Details of implementation are provided within the respective script files:
+- Crawler Implementation
+- Indexing Implementation
+- Neural Indexing Implementation
+- Query Processor Implementation
 
-- Crawler Implementation in `mycrawler.py`
-- Indexing Implementation in `indexer.py`
-- Neural Indexing Implementation in `text_processing.py`
-- Query Processor Implementation in `app.py`
+## Results and Discussion
 
-## VI. Results and Discussion
+1) Crawl Performance and Analysis
+- Crawl Statistics Summary
+- Analysis of Findings
 
-### 1) Crawl Performance and Analysis
+2) Visualization and Analysis of TF-IDF Scores
+- Overview
+- Methodology
+- Results
+- Analysis
+- Conclusion
 
-The Scrapy crawler's deployment and statistical outcomes are presented, including a summary of requests made and responses received, along with an analysis of findings and error analysis.
+3) Visualization of Word2Vec Embeddings and FAISS Index Query Results
+- Objective
+- Word2Vec Embeddings Visualization
+- FAISS Index Query Results
+- Discussion
+- Conclusion
 
-### 2) Visualization and Analysis of TF-IDF Scores
+4) Testing of Query Processor (`app.py`)
+- Test Objectives
+- Methodology
+- Test 1: Valid Search Query
+- Test 2: Error Handling for Missing Query Data
+- Conclusions
 
-A bar chart visualizing the average TF-IDF scores for the top 20 terms, with a discussion on the implications for our indexing strategy and areas for improvement.
+## Challenges
 
-### 3) Visualization of Word2Vec Embeddings and FAISS Index Query Results
+During the development of our information retrieval system, we encountered several challenges that required innovative solutions and technical proficiency. The primary issues included optimizing the Word2Vec model for our specific dataset, managing the sparsity of the TF-IDF matrix, and integrating the FAISS library with the Word2Vec embeddings.
 
-The visualization of Word2Vec embeddings using PCA and t-SNE, along with a discussion of the FAISS index query results, highlight the system's capabilities and areas needing further review.
+- Word2Vec Optimization: Tuning the Word2Vec model parameters to generate meaningful word embeddings was a complex process. It required several iterations to select the appropriate context window size, minimum word frequency, and the number of features. The key was to strike a balance between capturing the nuances of the language and the computational efficiency of the model.
 
-### 4) Testing of Query Processor (app.py)
+- TF-IDF Sparsity: Dealing with the high dimensionality and sparsity of the TF-IDF matrix presented memory management challenges. To address this, we implemented dimensionality reduction techniques and optimized our storage approach to ensure quick retrieval without excessive resource consumption.
 
-Documented tests verifying the functionality and error handling of the query processor, demonstrating its reliability and robust error handling.
+- FAISS Integration: The combination of FAISS with Word2Vec for efficient similarity searches necessitated a careful consideration of vector sizes and normalization. The FAISS index had to be precisely tailored to handle the semantic vectors produced by Word2Vec, ensuring that nearest-neighbor queries returned relevant results.
 
-## VII. Challenges
+## Conclusion
 
-Challenges in optimizing the Word2Vec model, managing the sparsity of the TF-IDF matrix, and integrating FAISS with Word2Vec are discussed, along with the solutions implemented.
+The development of this information retrieval system has successfully demonstrated the integration of traditional and neural search methodologies. The system's modular architecture allows for the efficient indexing and retrieval of HTML documents, catering to both keyword-based and semantic search queries. Through rigorous testing, the system has proven to be robust, reliable, and scalable.
 
-## VIII. Conclusion
+While the system performs well with current technologies, it is designed with flexibility in mind, allowing for future integration of more advanced models and algorithms. The challenges faced and overcome during this project have provided valuable insights that will inform future development and optimizations.
 
-A conclusion on the successful demonstration of the system's integration of traditional and neural search methods and its robust, reliable, and scalable nature.
+## Future Work
 
-## IX. Future Work
+Looking ahead, there are several avenues for further enhancement of our information retrieval system:
 
-The future enhancements outlined include real-time indexing, broader domain crawling, improved NLP for query understanding, exploration of transformer-based models for semantic search, user experience enhancements, and performance optimization.
+- Real-Time Indexing: Implementing real-time updates to the indices will allow the system to handle dynamic content changes more effectively, ensuring that search results remain current and relevant.
 
+- Broader Domain Crawling: Expanding the scope of the web crawler to cover a more extensive range of domains will enrich the dataset and improve the diversity of the search results.
 
+- Improved NLP for Query Understanding: Incorporating more advanced natural language processing techniques will enable the system to better understand the intent behind user queries, leading to more accurate search results.
 
+- Transformer-Based Models for Semantic Search: Exploring the use of transformer-based models, such as BERT, could significantly enhance the system's understanding of document context and relevance, propelling our search capabilities to the forefront of the field.
+
+- User Experience: Enhancing the user interface and providing a more interactive and user-friendly experience will make the search system more accessible to a broader audience.
+
+- Performance Optimization: Continuous optimization of the system's performance, particularly in terms of speed and resource usage, will remain a priority to ensure the system can scale to meet user demands.
 
